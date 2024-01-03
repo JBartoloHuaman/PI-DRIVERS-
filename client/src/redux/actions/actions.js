@@ -1,8 +1,8 @@
 import { GET_DRIVERS, GET_TEAMS, GET_DRIVER_ID, PAGINATION, SEARCH_DRIVER, FILTER_TEAM, REFRESH, FILTER_ORDER, FILTER_ORIGIN, CLEAN_DETAIL } from "./actions-types";
 import axios from "axios";
 
-const URL_DRIVERS = "http://localhost:3001/drivers";
-const URL_TEAMS = "http://localhost:3001/teams";
+const URL_DRIVERS = "/drivers";
+const URL_TEAMS = "/teams";
 
 export const getDrivers = () => {
     return async (dispatch) => {
