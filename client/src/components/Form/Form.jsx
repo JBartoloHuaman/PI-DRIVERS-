@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDriver, getTeams } from '../../redux/actions/actions';
 import validation from "../../validation";
@@ -7,6 +8,7 @@ import "./form.css";
 
 function Form() {
 
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const teams = useSelector(state => state.teams);
   const drivers = useSelector(state => state.drivers)
@@ -21,7 +23,7 @@ function Form() {
     nacionality:"",
     birthdate:"",
     Teams:[],
-    image:"",
+    image:"https://img.freepik.com/vector-premium/coche-corredor-dibujos-animados_74102-1526.jpg",
     description:"",
   })
 
@@ -91,7 +93,7 @@ function Form() {
       image:"",
       description:"",
     })
-
+    navigate('/home')
   }
 
   return (
@@ -137,7 +139,7 @@ function Form() {
           <button onClick={addTeam} className='form-button'>+</button>
 
         <label className='form-label'>Image:
-          <input onChange={handleInput} value={form.image} name='image' type="text" placeholder='link...'/>
+          <input onChange={handleInput} value={form.image} name='image' type="text" placeholder='https://img.freepik.com/vector-premium/coche-corredor-dibujos-animados_74102-1526.jpg'/>
           <div className='error-cont'>{errors.image}</div>
         </label>
 
