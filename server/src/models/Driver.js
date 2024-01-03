@@ -39,11 +39,6 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       defaultValue: "https://img.freepik.com/vector-premium/coche-corredor-dibujos-animados_74102-1526.jpg",
-      validate: {
-        isUrl: {
-          msg: 'Must be an URL',
-        }
-      }
     },
     nacionality: {
       type: DataTypes.STRING(10),
