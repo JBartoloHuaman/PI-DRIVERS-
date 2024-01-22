@@ -28,7 +28,7 @@ export default function Nav() {
       <ul className={style['container']}>
         <li className={style["li-img"]}>
           <Link to="/">
-            <img src={logo} alt="" />
+            <img className={style['img-logo']} src={logo} alt="logo" />
           </Link>
         </li>
         <li className={style["li"]}>
@@ -51,7 +51,7 @@ export default function Nav() {
                   id="search"
                   placeholder="Buscar..."
                 />
-                <button onClick={handleButton}>Buscar</button>
+                <button className={style['button-search']} onClick={handleButton}>Buscar</button>
               </div>
             </form>
           </section>

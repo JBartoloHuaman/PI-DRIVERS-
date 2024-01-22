@@ -1,0 +1,21 @@
+/* .cards-cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 80px;
+    padding: 150px 80px;
+} */
+
+.cards-cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3vw 5vw;
+  margin: 3rem 10rem;
+}
+
+@media (max-width: 775px) {
+  .cards-cont {
+    grid-template-columns: 1fr;
+    gap: 7vw;
+    margin-top: 3rem;
+  }
+}

@@ -1,10 +1,10 @@
 import Card from "../Card/Card";
-import "./cards.css"
+import style from "./cards.module.css"
 function Cards({drivers}) {
   
 
     return (
-      <div className="cards-cont">
+      <div className={style['cards-cont']}>
         {drivers?.map(driver => {
           return (
           <Card
