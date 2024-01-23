@@ -4,6 +4,8 @@
   align-items: center;
   background-color: #242424;
   color: white;
+  border-left: 4rem solid #870000;
+  border-right: 4rem solid #870000;
 }
 
 .prevandnext {
@@ -33,6 +35,10 @@
 }
 
 @media (max-width: 775px) {
+  .page-container{
+    border-left: 2rem solid #870000;
+    border-right: 2rem solid #870000;
+  }
   .filters {
     display: flex;
     flex-direction: row;

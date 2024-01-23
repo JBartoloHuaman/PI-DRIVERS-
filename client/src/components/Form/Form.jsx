@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createDriver, getTeams } from '../../redux/actions/actions';
 import validation from "../../validation";
 import Card from "../Card/Card";
-import "./form.css";
+import style from "./form.module.css";
 
 function Form() {
 
@@ -97,38 +97,38 @@ function Form() {
   }
 
   return (
-    <div className='form-cont'>
-    <form onSubmit={handleSubmit}>
+    <div className={style['form-cont']}>
+    <form className={style['form']} onSubmit={handleSubmit}>
     <h2>Creating Drive</h2>
 
-      <fieldset>
+      <fieldset className={style['fielset-content']}>
         <legend ><h3>Driver Information</h3></legend>
 
-        <label className='form-label'>Name:
+        <label className={style['form-label']}>Name:
         <input onChange={handleInput} value={form.name} type="text" name="name" placeholder='Write...'/>
-        <div className='error-cont'>{errors.name}</div>
+        <div className={style['error-cont']}>{errors.name}</div>
         </label>
 
-        <label className='form-label' >Lastname:
+        <label className={style['form-label']} >Lastname:
         <input onChange={handleInput} value={form.lastname} type="text" name="lastname" placeholder='Write...'/>
-        <div className='error-cont'>{errors.lastname}</div>
+        <div className={style['error-cont']}>{errors.lastname}</div>
         </label>
 
-        <label className='form-label' >Nationality:
+        <label className={style['form-label']} >Nationality:
         <input onChange={handleInput} value={form.nacionality} type="text" name="nacionality" placeholder='Write...'/>
-        <div className='error-cont'>{errors.nationality}</div>
+        <div className={style['error-cont']}>{errors.nationality}</div>
         </label>
 
-        <label className='form-label'>Birthdate:
+        <label className={style['form-label']}>Birthdate:
         <input onChange={handleInput} value={form.birthdate} type="date" name="birthdate" id="birthdate" placeholder='Write...'/> 
-        <div className='error-cont'>{errors.birthdate}</div>
+        <div className={style['error-cont']}>{errors.birthdate}</div>
         </label>
       </fieldset>
 
-      <fieldset>
+      <fieldset className={style['fielset-content']}>
         <legend><h3>Additional Information</h3></legend>
 
-        <div className='form-label'>
+        <div className={style['form-label']}>
           <label htmlFor="teams">Teams:</label>
           <select onChange={handleInput} name="teams" id="teams">
             <option value="------">------</option>
@@ -136,20 +136,20 @@ function Form() {
           </select>
         </div>
         {inputTeam.length ? inputTeam.map((e)=>e) : null}
-          <button onClick={addTeam} className='form-button'>+</button>
+          <button onClick={addTeam} className={style['form-button']}>+</button>
 
-        <label className='form-label'>Image:
+        <label className={style['form-label']}>Image:
           <input onChange={handleInput} value={form.image} name='image' type="text" placeholder='https://img.freepik.com/vector-premium/coche-corredor-dibujos-animados_74102-1526.jpg'/>
-          <div className='error-cont'>{errors.image}</div>
+          <div className={style['error-cont']}>{errors.image}</div>
         </label>
 
-        <label className='form-label'>Description: <br />
+        <label className={style['form-label']}>Description: <br />
           <textarea onChange={handleInput} value={form.description} name="description" cols="30" rows="10" placeholder='Write...'></textarea>
-          <div className='error-cont'>{errors.description}</div>
+          <div className={style['error-cont']}>{errors.description}</div>
         </label>
       </fieldset>
 
-      <button type="submit" className='form-submit'>Register</button>
+      <button type="submit" className={style['form-submit']}>Register</button>
     </form>
     <Card className="form-card" name={form.name} image={form.image} Teams={form.Teams}/>
     </div>
