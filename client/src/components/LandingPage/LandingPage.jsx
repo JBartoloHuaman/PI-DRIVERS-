@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
-import style from "./landingpage.module.css";
+// import style from "./landingpage.module.css";
 
 export default function LandingPage() {
   return (
-    <div className={style['landing-cont']}>
-      <div className={style['title-cont']}>
-        <h1 className={style['title']}>WELCOME</h1>
+    <div className="flex justify-center items-center bg-fondo bg-cover bg-no-repeat h-screen bg-center ">
+      <div className=" gap-8 text-white flex flex-col items-center">
+        <h1 className="text-6xl font-bold">WELCOME</h1>
         <Link to="/home">
-          <button className={style["button-landing"]}>Entrar
-          <span></span>
-          <span></span>
-          <span></span>
-          </button>
+          <button className=" active:outline sm:hover:outline  px-11 py-3 rounded-xl bg-gradient-to-tl from-red-700 via-red-600 to-blue-700 text-xl ">Entrar</button>
         </Link>
       </div>
     </div>

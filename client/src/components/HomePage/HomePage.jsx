@@ -10,7 +10,6 @@ import {
   filterOrigin,
 } from "../../redux/actions/actions";
 import Cards from "../Cards/Cards";
-import style from "./homepage.module.css";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -45,31 +44,29 @@ const HomePage = () => {
   };
 
   return (
-    <div className={style["page-container"]}>
-      <div className={style["home-filter"]}>
-        <div className={style["page-number"]}>
-          <h3>Page: {currentPage + 1}</h3>
-        </div>
-        <div className={style["filters"]}>
+    <div className=" border-x-[20px] border-[#870000] lg:border-x-[60px]">
+      <div className="max-w-7xl mx-auto sm:gap-3 flex flex-col items-center">
+        <h3 className=" text-lg font-semibold">Page: {currentPage + 1}</h3>
+        <div className=" py-4 w-full justify-center flex flex-row ">
           <button
+            className="sm:hover:bg-white sm:hover:text-red-700 active:bg-red-950 mr-1 bg-red-700 rounded-md pl-1 pr-1 font-bold "
             onClick={pagination}
             name="prev"
-            className={`${style["select"]} ${style["prevandnext"]}`}
           >
             {"<<"}
           </button>
-          <div className={style["filters-f"]}>
+          <div className="flex flex-col gap-1 sm:flex-row">
             <button
+              className="sm:h-auto sm:hover:bg-red-700 sm:hover:text-white active:bg-red-300 font-bold text-red-700 bg-white rounded-md h-[50%]"
               onClick={handleRefresh}
-              className={`${style["select"]} ${style["refresh"]}`}
             >
               Refresh
             </button>
 
             <select
+              className="text-black"
               name="filter-origin"
               onChange={filter}
-              className={`${style["select"]} ${style["filter-origin"]}`}
               id="select-1"
             >
               <option value="all-drivers">All Drivers</option>
@@ -78,9 +75,9 @@ const HomePage = () => {
             </select>
 
             <select
+              className="text-black"
               name="filter-teams"
               onChange={filter}
-              className={`${style["select"]} ${style["filter-teams"]}`}
               id="select-2"
             >
               <option value="------">------</option>
@@ -92,9 +89,9 @@ const HomePage = () => {
             </select>
 
             <select
+              className="text-black"
               name="filter-order"
               onChange={filter}
-              className={`${style["select"]} ${style["filter-order"]}`}
               id="select-3"
             >
               <option value="------">------</option>
@@ -103,15 +100,15 @@ const HomePage = () => {
             </select>
           </div>
           <button
+            className="sm:hover:bg-white sm:hover:text-red-700 active:bg-red-950 ml-1 bg-red-700 rounded-md pl-1 pr-1 font-bold"
             onClick={pagination}
             name="next"
-            className={`${style["select"]} ${style["prevandnext"]}`}
           >
             {">>"}
           </button>
         </div>
+        <Cards drivers={drivers} />
       </div>
-      <Cards drivers={drivers} />
     </div>
   );
 };

@@ -1,12 +1,9 @@
 import Card from "../Card/Card";
-import style from "./cards.module.css"
-function Cards({drivers}) {
-  
-
-    return (
-      <div className={style['cards-cont']}>
-        {drivers?.map(driver => {
-          return (
+function Cards({ drivers }) {
+  return (
+    <div className="lg:gap-x-16 lg:gap-y-8 sm:gap-6 sm:grid sm:grid-cols-2 md:grid-cols-3">
+      {drivers?.map((driver) => {
+        return (
           <Card
             key={driver.id}
             id={driver.id}
@@ -14,11 +11,10 @@ function Cards({drivers}) {
             image={driver.image}
             Teams={driver.Teams?.join(", ")}
           />
-          )
-        })}
-      </div>
-    )
-  }
-  
-  export default Cards
+        );
+      })}
+    </div>
+  );
+}
 
+export default Cards;
