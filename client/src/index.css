@@ -10,3 +10,7 @@ body {
 *{
     box-sizing: border-box;
 }
+
+.landing{
+    background-image: url("./img/portada.png");
+}

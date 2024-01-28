@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-// import style from "./landingpage.module.css";
 
 export default function LandingPage() {
   return (
-    <div className="flex justify-center items-center bg-fondo bg-cover bg-no-repeat h-screen bg-center ">
+    <div className="landing flex justify-center items-center bg-cover bg-no-repeat h-screen bg-center ">
       <div className=" gap-8 text-white flex flex-col items-center">
         <h1 className="text-6xl font-bold">WELCOME</h1>
         <Link to="/home">
