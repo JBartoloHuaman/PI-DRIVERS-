@@ -1,0 +1,21 @@
+const imageUpload = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "images");
+
+  const response = await fetch(
+    "https://api.cloudinary.com/v1_1/di2xrb9uq/image/upload",
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+
+  if (response.ok) {
+    const imageUrl = await response.json();
+    return imageUrl.url;
+  } else {
+    console.error("Error al cargar la imagen a Cloudinary");
+  }
+};
+export default imageUpload;

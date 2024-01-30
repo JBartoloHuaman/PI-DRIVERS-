@@ -1,7 +1,7 @@
 function validation({name,lastname,nacionality,image,description,birthdate}){
     const onlyLetters = /^[A-Za-zÁáÉéÍíÓóÚúÑñ]+$/;
-    const url = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-    const imageurl = /\.(jpg|jpeg|png|gif)$/i;
+    // const url = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    // const imageurl = /\.(jpg|jpeg|png|gif)$/i;
     const errors={}
     if(name.length<5) errors.name= "Must be at least 5 characters"
     if(!name.length) errors.name = "missing data"
@@ -16,7 +16,7 @@ function validation({name,lastname,nacionality,image,description,birthdate}){
     if(!onlyLetters.test(name)) errors.name = "numbers are not allowed"
     if(!onlyLetters.test(lastname)) errors.lastname = "numbers are not allowed"
     if(!onlyLetters.test(nacionality)) errors.nationality = "numbers are not allowed"
-    if(!url.test(image) || !imageurl.test(image)) errors.image = "must be the URL of an image"
+    // if(!url.test(image) || !imageurl.test(image)) errors.image = "must be the URL of an image"
    
    
     

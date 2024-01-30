@@ -46,7 +46,7 @@ export default function Nav() {
             type="text"
             id="search"
             placeholder="Buscar..."
-            className="sm:h-6 text-black h-7 rounded-s-lg"
+            className=" px-4 sm:h-6 text-black h-7 rounded-s-lg"
           />
           <button className=" hover:bg-red-600 cursor-pointer h-7 bg-gray-900 w-16" onClick={handleButton}>
             Buscar
