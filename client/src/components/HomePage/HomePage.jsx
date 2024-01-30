@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   getDrivers,
   getTeams,
@@ -15,11 +15,19 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const drivers = useSelector((state) => state.drivers);
   const teams = useSelector((state) => state.teams);
+
   const currentPage = useSelector((state) => state.currentPage);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getDrivers());
-    dispatch(getTeams());
+    const data = async () => {
+      setLoading(true);
+      await dispatch(getDrivers());
+      await dispatch(getTeams());
+      setLoading(false);
+    };
+
+    data();
   }, []);
 
   const pagination = (event) => {
@@ -107,7 +115,13 @@ const HomePage = () => {
             {">>"}
           </button>
         </div>
-        <Cards drivers={drivers} />
+        {loading ? (
+          <div className="mt-20 text-3xl font-mono font-semibold text-blue-300">
+            <h1>Loading...</h1>
+          </div>
+        ) : (
+          <Cards drivers={drivers} />
+        )}
       </div>
     </div>
   );

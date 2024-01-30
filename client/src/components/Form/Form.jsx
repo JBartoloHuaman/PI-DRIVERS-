@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createDriver, getTeams } from "../../redux/actions/actions";
 import validation from "../../validation";
 import Card from "../Card/Card";
+import imageUpload from "./imageUpload";
 
 function Form() {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ function Form() {
   useEffect(() => {
     dispatch(getTeams());
   }, []);
+
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -30,6 +33,18 @@ function Form() {
   const [team, setTeam] = useState([]);
   const [inputTeam, setInputTeam] = useState([]);
   const [errors, setErrors] = useState({});
+
+  const handlerChangeImage = async (event) => {
+    console.log("entro");
+    const file = event.target.files[0];
+    setLoading(true);
+    const image = await imageUpload(file);
+    setForm({
+      ...form,
+      image,
+    });
+    setLoading(false)
+  };
 
   const handleInput = (event) => {
     if (event.target.name === "teams") {
@@ -94,6 +109,7 @@ function Form() {
     }
     // if(Object.keys(errors).length) return alert("Faltan completar algunos datos")
     if (driversRepeat) return alert("The driver is already registered");
+
     dispatch(createDriver(form));
     alert("driver is created");
     setInputTeam([]);
@@ -123,7 +139,12 @@ function Form() {
             </h3>
           </legend>
           <div>
-            <label className="block text-sm font-medium leading-6">Name:</label>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium leading-6"
+            >
+              Name:
+            </label>
             <div className="mt-2">
               <input
                 className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset px-3 ring-gray-300 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
@@ -131,6 +152,7 @@ function Form() {
                 value={form.name}
                 type="text"
                 name="name"
+                id="name"
                 placeholder="Write..."
               />
             </div>
@@ -138,7 +160,10 @@ function Form() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6">
+            <label
+              htmlFor="lastname"
+              className="block text-sm font-medium leading-6"
+            >
               Lastname:
             </label>
             <div className="mt-2">
@@ -148,6 +173,7 @@ function Form() {
                 value={form.lastname}
                 type="text"
                 name="lastname"
+                id="lastname"
                 placeholder="Write..."
               />
             </div>
@@ -157,7 +183,10 @@ function Form() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6">
+            <label
+              htmlFor="nacionality"
+              className="block text-sm font-medium leading-6"
+            >
               Nationality:
             </label>
             <div className="mt-2">
@@ -167,6 +196,7 @@ function Form() {
                 value={form.nacionality}
                 type="text"
                 name="nacionality"
+                id="nacionality"
                 placeholder="Write..."
               />
             </div>
@@ -175,7 +205,7 @@ function Form() {
             </div>
           </div>
           <div className="block text-sm font-medium leading-6">
-            <label>Birthdate:</label>
+            <label htmlFor="birthdate">Birthdate:</label>
             <div className="mt-2">
               <input
                 className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset px-3 ring-gray-300 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
@@ -224,29 +254,42 @@ function Form() {
             </div>
           </div>
           {inputTeam.length ? inputTeam.map((e) => e) : null}
-          <button onClick={addTeam}>+</button>
+          <button
+            className="sm:border-0 sm:hover:outline bg-gray-900 border mt-2 py-2 px-4 font-extrabold rounded-xl "
+            onClick={addTeam}
+          >
+            +
+          </button>
 
           <div>
             <label className="block text-sm font-medium leading-6">
               Image:
             </label>
             <div className="mt-2">
+              <div className="flex items-center gap-5">
+
+              <label
+                htmlFor="input-image"
+                className="block active:bg-red-500 sm:hover:scale-110 cursor-pointer bg-[#00d9ff42] w-fit py-2.5 px-5 border-4 border-dashed rounded-xl"
+              >
+                Upload Image
+              </label>
+              {loading ? <span className="font-bold">Cargando Imagen...</span> : null} 
+              </div>
               <input
-                className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset px-3 ring-gray-300 text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
-                onChange={handleInput}
-                value={form.image}
-                name="image"
-                type="text"
-                placeholder="https://img.freepik.com/vector-premium/coche-corredor-dibujos-animados_74102-1526.jpg"
+                type="file"
+                id="input-image"
+                className="hidden"
+                onChange={handlerChangeImage}
               />
-            </div>
-            <div className=" text-red-400 font-mono text-sm">
-              {errors.image}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium leading-6">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium leading-6"
+            >
               Description:
             </label>
             <div className="mt-2">
@@ -255,6 +298,7 @@ function Form() {
                 onChange={handleInput}
                 value={form.description}
                 name="description"
+                id="description"
                 cols="30"
                 rows="10"
                 placeholder="Write..."
